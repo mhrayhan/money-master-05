@@ -1,3 +1,4 @@
+// function for get input value 
 function getInputValue(inputId){
     const inputField = document.getElementById(inputId).value;
     const input = parseFloat(inputField); 
@@ -8,8 +9,8 @@ function getInputValue(inputId){
     const rentError = document.getElementById('rentError');
     const clothError = document.getElementById('clothError');
 
+    // function for calculate expense and balance 
 function calculate(){
-
     const income = getInputValue('income');
     const food = getInputValue('food');
     const rent = getInputValue('rent');
@@ -17,6 +18,7 @@ function calculate(){
 
     const sumExpense = food + rent + clothe;
     const balance = income - sumExpense;
+    // error validation
     if(income < 0 || isNaN(income)){
        incomeError.style.display = 'block';
        foodError.style.display = 'none';
@@ -46,10 +48,12 @@ function calculate(){
         foodError.style.display = 'none';
         incomeError.style.display = 'none';
     }
-
-
-
 }
+
+const saveError = document.getElementById('saveError');
+const saveAmountError = document.getElementById('saveAmountError');
+
+// function for savings calculation 
 function savingsAmount(){
     const balanceField = document.getElementById('balance').innerText;
     const balance = parseFloat(balanceField);
@@ -60,24 +64,28 @@ function savingsAmount(){
     const savingsAmount = income / 100 * savePercent;
     const remainingBalance = balance - savingsAmount;
 
-    if(balance < savingsAmount){
-        alert('warning');
-    }else{
+    if(savePercent < 0 || isNaN(savePercent)){
+        saveAmountError.style.display = 'block';
+        saveError.style.display = 'none';
+    }else if(balance < savingsAmount || balance <= 0){
+        saveError.style.display = 'block';
+        saveAmountError.style.display = 'none';
+    }
+    else{
         document.getElementById('savings-amount').innerText = savingsAmount;
         document.getElementById('remaining-balance').innerText = remainingBalance;
+        saveAmountError.style.display = 'none';
+        saveError.style.display = 'none';
     }
-
-
-
 }
 
 
 
-
+// calculation event handaler 
 document.getElementById('calculate-button').addEventListener('click', function(){
     calculate();
 })
-
+// savings event handaler 
 document.getElementById('save').addEventListener('click', function(){
     savingsAmount();
 })

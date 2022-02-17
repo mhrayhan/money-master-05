@@ -1,5 +1,7 @@
+/* google font inport  */
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500&family=Kaisei+Decol:wght@400;700&family=Poppins:wght@400;500;700&family=Roboto:wght@400;700&display=swap');
 
+/* validation text style  */
 #incomeError {
     font-size: 12px;
     color: red;
@@ -24,8 +26,31 @@
     margin-bottom: 0;
     display: none;
 }
+#expenseError{
+    font-size: 12px;
+    color: red;
+    margin-bottom: 0;
+    display: none;
+}
+#saveError{
+    font-size: 12px;
+    color: red;
+    margin-bottom: 0;
+    display: none;
+}
+#saveAmountError{
+    font-size: 12px;
+    color: red;
+    margin-bottom: 0;
+    display: none;
+}
+/* heading style  */
 .heading{
     color: #0127ff;
     font-family: 'Kaisei Decol', serif;
     font-weight: bold;
+}
+/* calculation section style  */
+.calculation-part{
+    background-color: #fffaf3;
 }
