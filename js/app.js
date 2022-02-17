@@ -42,6 +42,9 @@ function calculate(){
         document.getElementById('total-expense').innerText = sumExpense;
         document.getElementById('balance').innerText = balance;
         clothError.style.display = 'none';
+        rentError.style.display = 'none';
+        foodError.style.display = 'none';
+        incomeError.style.display = 'none';
     }
 
 
