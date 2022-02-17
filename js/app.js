@@ -1,21 +1,51 @@
-document.getElementById('calculate-button').addEventListener('click', function(){
-    const incomeInput = document.getElementById('income').value;
-    const income = parseFloat(incomeInput);
-    const foodInput = document.getElementById('food').value;
-    const food = parseFloat(foodInput);
-    const rentInput = document.getElementById('rent').value;
-    const rent = parseFloat(rentInput);
-    const clothesInput = document.getElementById('clothes').value;
-    const clothe = parseFloat(clothesInput);
+function getInputValue(inputId){
+    const inputField = document.getElementById(inputId).value;
+    const input = parseFloat(inputField);
+    return input;
+}
+
+
+function calculate(){
+    const income = getInputValue('income');
+    const food = getInputValue('food');
+    const rent = getInputValue('rent');
+    const clothe = getInputValue('clothes');
 
     const sumExpense = food + rent + clothe;
-    console.log(sumExpense);
-
+    const balance = income - sumExpense;
 
     document.getElementById('total-expense').innerText = sumExpense;
+    document.getElementById('balance').innerText = balance;
 
-    document.getElementById('balance').innerText = income - sumExpense;
+}
+function savingsAmount(){
+    const balanceField = document.getElementById('balance').innerText;
+    const balance = parseFloat(balanceField);
+
+    const income = getInputValue('income');
+    const savePercent =  getInputValue('savings');
+
+    const savingsAmount = income / 100 * savePercent;
+    const remainingBalance = balance - savingsAmount;
+
+    if(balance < savingsAmount){
+        alert('warning');
+    }else{
+        document.getElementById('savings-amount').innerText = savingsAmount;
+        document.getElementById('remaining-balance').innerText = remainingBalance;
+    }
 
 
 
+}
+
+
+
+
+document.getElementById('calculate-button').addEventListener('click', function(){
+    calculate();
+})
+
+document.getElementById('save').addEventListener('click', function(){
+    savingsAmount();
 })
