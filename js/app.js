@@ -1,11 +1,12 @@
 function getInputValue(inputId){
     const inputField = document.getElementById(inputId).value;
-    const input = parseFloat(inputField);
+    const input = parseFloat(inputField); 
     return input;
 }
 
 
 function calculate(){
+    const incomeError = document.getElementById('incomeError');
     const income = getInputValue('income');
     const food = getInputValue('food');
     const rent = getInputValue('rent');
@@ -13,9 +14,21 @@ function calculate(){
 
     const sumExpense = food + rent + clothe;
     const balance = income - sumExpense;
+    if(income < 0){
+       incomeError.innerHTML = 'warning';
+    }if(food < 0){
+        alert('food value');
+    }if(rent < 0){
+        alert('rent value');
+    }if(clothe < 0){
+        alert('clothes value');
+    }
+    else{
+        document.getElementById('total-expense').innerText = sumExpense;
+        document.getElementById('balance').innerText = balance;
+    }
 
-    document.getElementById('total-expense').innerText = sumExpense;
-    document.getElementById('balance').innerText = balance;
+
 
 }
 function savingsAmount(){
